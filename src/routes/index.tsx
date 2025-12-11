@@ -1,0 +1,24 @@
+// src/routes/index.tsx
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+import App from '../App';
+import Home from '@/page/home';
+
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      { index: true, element: <Navigate to="/home" replace /> },
+      {
+        path: 'home',
+        children: [
+          { index: true, element: <Home /> },
+        ],
+      },
+      {
+        path: '*',
+        element: <Home />,
+      },
+    ],
+  },
+]);
